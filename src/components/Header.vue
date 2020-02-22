@@ -5,25 +5,30 @@
     scrolling
     class="navbar-light lighten-5"
   >
-    <mdb-navbar-brand href="https://sourcelink.co.uk" target="_blank">
-      Sourcelink
+    <mdb-navbar-brand href="" target="_blank">
+      Sketch
     </mdb-navbar-brand>
     <mdb-navbar-toggler>
       <mdb-navbar-nav center color="blue-grey">
-        <mdb-nav-item :to="{ name: 'home' }" waves-fixed active class="active">Home</mdb-nav-item>
-        <mdb-nav-item :to="{ name: 'about' }" waves-fixed active class="active">About</mdb-nav-item>
+        <mdb-nav-item :to="{ name: 'home' }" waves-fixed active class="active"
+          >Home</mdb-nav-item
+        >
+        <mdb-nav-item :to="{ name: 'about' }" waves-fixed active class="active"
+          >About</mdb-nav-item
+        >
       </mdb-navbar-nav>
       <mdb-navbar-nav right color="blue-grey">
-        <mdb-nav-item
-          v-if="!loggedIn"
-          :to="{ name: 'login' }"
-          waves-fixed active class="active"
-        >
-          Login
-        </mdb-nav-item>
-        <span v-else>
+        <div v-if="!loggedIn" class="nav-items">
+          <mdb-nav-item :to="{ name: 'login' }">
+            Login
+          </mdb-nav-item>
+          <mdb-nav-item :to="{ name: 'signup' }">
+            Signup
+          </mdb-nav-item>
+        </div>
+        <div v-else>
           <a @click="logout">Logout</a>
-        </span>
+        </div>
       </mdb-navbar-nav>
     </mdb-navbar-toggler>
   </mdb-navbar>
@@ -47,15 +52,25 @@ export default {
     mdbNavbarNav,
     mdbNavbarToggler
   },
-  computed : {
-    loggedIn : function() {
+  computed: {
+    loggedIn: function() {
       return this.$store.getters.loggedIn;
     }
   },
   methods: {
     logout: function() {
-      this.$store.dispatch('logout');
+      this.$store.dispatch("logout");
     }
   }
 };
 </script>
+
+<style scoped>
+.nav-items {
+  display: flex;
+}
+
+.nav-item {
+  margin-right: 10px;
+}
+</style>

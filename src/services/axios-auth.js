@@ -1,7 +1,7 @@
-import axios from 'axios'
+import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://identitytoolkit.googleapis.com/v1'
-})
+  baseURL: "http://localhost:8000"
+});
 
-export default instance
+export default instance;

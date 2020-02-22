@@ -5,8 +5,14 @@
         <mdb-col col="4"></mdb-col>
         <mdb-col col="4">
           <form>
-            <p class="h4 text-center mb-4">Sign in</p>
+            <p class="h4 text-center mb-4">Signup</p>
             <div class="grey-text">
+              <mdb-input
+                v-model="username"
+                label="Username"
+                icon="user"
+                type="text"
+              />
               <mdb-input
                 v-model="email"
                 label="Your email"
@@ -15,17 +21,23 @@
               />
               <mdb-input
                 v-model="password"
-                label="Your password"
+                label="Password"
+                icon="lock"
+                type="password"
+              />
+              <mdb-input
+                v-model="pwdConfirm"
+                label="Confirm password"
                 icon="lock"
                 type="password"
               />
             </div>
             <div class="text-center">
-              <mdb-btn @click.native.prevent="login">Login</mdb-btn>
+              <mdb-btn @click.native.prevent="signup">Signup</mdb-btn>
             </div>
           </form>
-          <p v-if="loginError">
-            {{ loginError }}
+          <p v-if="signupError !== ''">
+            {{ signupError }}
           </p>
         </mdb-col>
         <mdb-col col="4"></mdb-col>
@@ -39,28 +51,32 @@ import { mdbContainer, mdbRow, mdbCol, mdbInput, mdbBtn } from "mdbvue";
 import { mapState } from "vuex";
 
 export default {
-  name: "login",
+  name: "signup",
   components: {
     mdbContainer,
     mdbRow,
-    mdbCol,     
+    mdbCol,
     mdbBtn,
     mdbInput
   },
   data() {
     return {
-      email: "user1@test.com",
-      password: "P@ssword1",
+      username: "",
+      email: "",
+      password: "",
+      pwdConfirm: "",
     };
   },
   computed: {
-    ...mapState(["loginError"])
+    ...mapState(["signupError"])
   },
   methods: {
-    login() {
-      this.$store.dispatch("login", {
+    signup() {
+      this.$store.dispatch("signup", {
+        username: this.username,
         email: this.email,
-        password: this.password
+        password1: this.password,
+        password2: this.pwdConfirm,
       });
     }
   }
