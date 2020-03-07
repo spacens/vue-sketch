@@ -64,7 +64,7 @@ export default {
       fullname: "",
       email: "",
       password: "",
-      pwdConfirm: "",
+      pwdConfirm: ""
     };
   },
   computed: {
@@ -76,7 +76,7 @@ export default {
         name: this.fullname,
         email: this.email,
         password1: this.password,
-        password2: this.pwdConfirm,
+        password2: this.pwdConfirm
       });
     }
   }

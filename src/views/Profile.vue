@@ -7,15 +7,15 @@
           <form>
             <p class="h4 text-center mb-4">Profile</p>
             <div class="grey-text">
-              <mdb-row>
+              <mdb-row class="mb-1">
                 <mdb-col>Full name</mdb-col>
                 <mdb-col>{{ user.name }}</mdb-col>
               </mdb-row>
-              <mdb-row>
+              <mdb-row class="mb-1">
                 <mdb-col>Birthday</mdb-col>
                 <mdb-col>{{ user.date_of_birth }}</mdb-col>
               </mdb-row>
-              <mdb-row>
+              <mdb-row class="mb-1">
                 <mdb-col>Phone</mdb-col>
                 <mdb-col>{{ user.phone }}</mdb-col>
               </mdb-row>

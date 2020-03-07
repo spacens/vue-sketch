@@ -102,11 +102,11 @@ export default new Vuex.Store({
       await axios.post("/rest-auth/logout/");
       router.push("/login");
     },
-    async updateProfile({ commit }, profile, callback) {
+    async updateProfile({ commit }, payload) {
       try {
-        await axios.put("/rest-auth/user/", profile);
-        commit("updateUser", profile);
-        callback();
+        await axios.put("/rest-auth/user/", payload.profile);
+        commit("updateUser", payload.profile);
+        payload.callback();
       } catch (error) {
         console.log("update error: ", error);
         commit("updateError", JSON.stringify(error));

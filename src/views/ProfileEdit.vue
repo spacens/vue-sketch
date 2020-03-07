@@ -8,12 +8,11 @@
             <p class="h4 text-center mb-4">Profile</p>
             <div class="grey-text">
               <mdb-input v-model="user.name" label="Full name" type="text" />
-              <!-- <mdb-input
+              <mdb-input
                 v-model="user.date_of_birth"
                 label="Birthday"
                 type="text"
-              /> -->
-              <mdb-date-picker label="Birthday" v-model="user.date_of_birth" icon="calendar" />
+              />
               <mdb-input v-model="user.phone" label="phone" type="text" />
             </div>
             <div class="text-center">
@@ -32,7 +31,13 @@
 </template>
 
 <script>
-import { mdbContainer, mdbRow, mdbCol, mdbInput, mdbBtn, mdbDatePicker } from "mdbvue";
+import {
+  mdbContainer,
+  mdbRow,
+  mdbCol,
+  mdbInput,
+  mdbBtn
+} from "mdbvue";
 import { mapState } from "vuex";
 import router from "../router";
 
@@ -43,8 +48,7 @@ export default {
     mdbRow,
     mdbCol,
     mdbBtn,
-    mdbInput,
-    mdbDatePicker
+    mdbInput
   },
   data() {
     const { name, phone, date_of_birth } = this.$store.state.user;
@@ -62,8 +66,11 @@ export default {
   methods: {
     save() {
       console.log("user: ", this.user);
-      this.$store.dispatch("updateProfile", this.user, () => {
-        router.push("/profile");
+      this.$store.dispatch("updateProfile", {
+        profile: this.user,
+        callback: () => {
+          router.push("/profile");
+        }
       });
     },
     cancel() {
