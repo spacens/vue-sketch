@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
 import Login from "../views/Login.vue";
 import Signup from "../views/Signup.vue";
+import Profile from "../views/Profile.vue";
+import ProfileEdit from "../views/ProfileEdit.vue";
 import store from "../store";
 
 Vue.use(VueRouter);
@@ -39,7 +41,23 @@ const routes = [
     meta: {
       requiresAuth: true
     }
-  }
+  },
+  {
+    path: "/profile",
+    name: "profile",
+    component: Profile,
+    meta: {
+      requiresAuth: true
+    }
+  },
+  {
+    path: "/profile/edit",
+    name: "profileEdit",
+    component: ProfileEdit,
+    meta: {
+      requiresAuth: true
+    }
+  },
 ];
 
 const router = new VueRouter({

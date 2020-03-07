@@ -8,8 +8,8 @@
             <p class="h4 text-center mb-4">Signup</p>
             <div class="grey-text">
               <mdb-input
-                v-model="username"
-                label="Username"
+                v-model="fullname"
+                label="Full name"
                 icon="user"
                 type="text"
               />
@@ -61,7 +61,7 @@ export default {
   },
   data() {
     return {
-      username: "",
+      fullname: "",
       email: "",
       password: "",
       pwdConfirm: "",
@@ -73,7 +73,7 @@ export default {
   methods: {
     signup() {
       this.$store.dispatch("signup", {
-        username: this.username,
+        name: this.fullname,
         email: this.email,
         password1: this.password,
         password2: this.pwdConfirm,

@@ -43,14 +43,14 @@ export default {
   components: {
     mdbContainer,
     mdbRow,
-    mdbCol,     
+    mdbCol,
     mdbBtn,
     mdbInput
   },
   data() {
     return {
-      email: "user1@test.com",
-      password: "P@ssword1",
+      email: "",
+      password: ""
     };
   },
   computed: {
